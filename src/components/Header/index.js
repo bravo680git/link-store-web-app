@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import clsx from "clsx"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 import useHandleLogout from "../../hooks/useHandleLogout"
 import storeAPI from "../../apis/store"
 import { setData } from '../../store/dataSlice'
@@ -28,6 +30,9 @@ function Header() {
     return (
         <div className={clsx(style.container)}>
             <header>
+                <div className={clsx(style.home)} onClick={ () => navigate('/store')}>
+                    <FontAwesomeIcon icon={faHome}/>
+                </div>
                 <div className={clsx(style.searchBox)}>
                     <input
                         placeholder="Search"
