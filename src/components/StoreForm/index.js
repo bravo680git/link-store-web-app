@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { setData } from '../../store/dataSlice'
 import storeAPI from '../../apis/store'
+import useFetch from '../../hooks/usefetch'
 import style from './StoreForm.module.scss'
 
 function StoreForm({ showForm }) {
@@ -17,6 +18,7 @@ function StoreForm({ showForm }) {
     const [description, setDescription] = useState(data.description ?? '')
     const [errorMsg, setErrorMsg] = useState('')
     const dispatch = useDispatch()
+    const fetchApi = useFetch()
 
     const handleSubmit = async () => {
         try {
@@ -28,11 +30,11 @@ function StoreForm({ showForm }) {
                 description
             }
             if (action === 'create') {
-                await storeAPI.saveLink(sendData)
+                await fetchApi(() => storeAPI.saveLink(sendData))
                 alert('Save item sucessfully')
             }
             else {
-                await storeAPI.editLink(data._id, sendData)
+                await fetchApi(() => storeAPI.editLink(data._id, sendData))
                 alert('Edit item sucessfully')
             }
             setShow({show:false})

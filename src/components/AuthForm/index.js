@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux"
 import clsx from "clsx"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faLock, faEye } from '@fortawesome/free-solid-svg-icons'
+
 import authAPI from '../../apis/auth'
+import useFetch from "../../hooks/usefetch"
 import { setLoginState } from '../../store/authSlice'
 import style from './AuthForm.module.scss'
 
@@ -14,10 +16,11 @@ function AuthForm({ type, setIsRegistered }) {
     const [showPassword, setShowPassword] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
     const dispatch = useDispatch()
+    const fetchApi = useFetch()
 
     const checkInputField = () => {
-        if (username.length <6) throw 'Username must have more than 8 charaters!'
-        if (password.length <6) throw 'Password must have more than 8 charaters!'
+        if (username.length < 6) throw 'Username must have more than 8 charaters!'
+        if (password.length < 6) throw 'Password must have more than 8 charaters!'
         if (type === 'register' && passwordCfm !== password) {
             throw 'Confirm password must simillar as password!'
         }
@@ -26,8 +29,8 @@ function AuthForm({ type, setIsRegistered }) {
     const handleLogin = async () => {
         try {
             checkInputField()
-            const account = {username, password}
-            const data = await authAPI.login(account)
+            const account = { username, password }
+            const data = await fetchApi(() => authAPI.login(account))
             localStorage.setItem('authToken', data.authToken)
             localStorage.setItem('isLogin', true)
             dispatch(setLoginState(true))
@@ -37,10 +40,10 @@ function AuthForm({ type, setIsRegistered }) {
     }
 
     const hadleRegister = async () => {
-        try {    
+        try {
             checkInputField()
-            const account = {username, password, passwordConfirm: passwordCfm}
-            await authAPI.register(account)
+            const account = { username, password, passwordConfirm: passwordCfm }
+            await fetchApi(() => authAPI.register(account))
             alert('Register new account sucessfully')
             setIsRegistered(true)
         } catch (error) {

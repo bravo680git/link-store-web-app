@@ -12,7 +12,7 @@ function Content() {
     const dispatch = useDispatch()
     const handleLogout = useHandleLogout()
     const data = useSelector(state => state.data.data)
-    const [show, setShow] = useState({show:false, data : {}, action:''})
+    const [show, setShow] = useState({ show: false, data: {}, action: '' })
 
     useEffect(() => {
         (async () => {
@@ -28,13 +28,13 @@ function Content() {
 
     return (
         <div className={clsx(style.container)}>
-            <div className={clsx(style.btn)} onClick={() => setShow({show: true, action: 'create'})}>
+            <div className={clsx(style.btn)} onClick={() => setShow({ show: true, action: 'create' })}>
                 Add a new Link
             </div>
-            {data.map((item, i) =>
+            {data && data.map((item, i) =>
                 <LinkTag dataTag={item} setShow={setShow} key={i} />)
             }
-            { show.show && <StoreForm showForm = {[show, setShow]} />}
+            {show.show && <StoreForm showForm={[show, setShow]} />}
         </div>
     )
 }

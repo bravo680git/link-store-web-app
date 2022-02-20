@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 import { setData } from '../../store/dataSlice'
 import storeAPI from '../../apis/store'
+import useFetch from "../../hooks/usefetch"
 import style from './LinkTag.module.scss'
 
 function LinkTag({ dataTag, setShow }) {
     const data = useSelector( state => state.data.data)
     const oldData = data
     const dispatch = useDispatch()
+    const fetchApi = useFetch()
 
     const handleEdit = async () => {
         setShow({
@@ -20,12 +22,13 @@ function LinkTag({ dataTag, setShow }) {
     }
     
     const handleDelete = async () => {    
+        const cfm = window.confirm('Delete this link tag')
+        if (!cfm ) return
         const id = dataTag._id
         const newData = data.filter(item => item._id !== id)
         dispatch(setData(newData))
         try {
-            await storeAPI.deleteLink(id)
-            alert('Delete item sucessfully')
+            await fetchApi(() => storeAPI.deleteLink(id))
         } catch (error) {
             alert('Fail to delete item: '+error)
             dispatch(setData(oldData))
