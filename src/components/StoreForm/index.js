@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import clsx from 'clsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { toast } from 'react-toastify'
+
 import { setData } from '../../store/dataSlice'
 import storeAPI from '../../apis/store'
 import useFetch from '../../hooks/usefetch'
@@ -29,18 +31,21 @@ function StoreForm({ showForm }) {
                 type,
                 description
             }
+            
             if (action === 'create') {
                 await fetchApi(() => storeAPI.saveLink(sendData))
-                alert('Save item sucessfully')
+                toast.success('Save item successfully')
             }
             else {
                 await fetchApi(() => storeAPI.editLink(data._id, sendData))
-                alert('Edit item sucessfully')
+                toast.success('Edit item successfully')
             }
-            setShow({show:false})
+
+            setShow({show:false}) //hide store form 
             const resData = await storeAPI.getAll()
             dispatch(setData(resData))
         } catch (error) {
+            toast.error(error)
             setErrorMsg(error)
         }
     }

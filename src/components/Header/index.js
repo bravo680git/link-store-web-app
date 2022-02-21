@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import clsx from "clsx"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { toast } from "react-toastify"
+
 import useHandleLogout from "../../hooks/useHandleLogout"
 import storeAPI from "../../apis/store"
 import { setData } from '../../store/dataSlice'
@@ -23,14 +25,23 @@ function Header() {
             const resData = await storeAPI.searchLink({[query]:search})
             dispatch(setData(resData))
         } catch (error) {
-            alert(error)
+            toast.error(error)
+        }
+    }
+
+    const goHome = async () => {
+        try {
+            const resData = await storeAPI.getAll()
+            dispatch(setData(resData))
+        } catch (error) {
+            toast.error(error)
         }
     }
 
     return (
         <div className={clsx(style.container)}>
             <header>
-                <div className={clsx(style.home)} onClick={ () => navigate('/store')}>
+                <div className={clsx(style.home)} onClick={goHome}>
                     <FontAwesomeIcon icon={faHome}/>
                 </div>
                 <div className={clsx(style.searchBox)}>

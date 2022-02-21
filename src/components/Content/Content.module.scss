@@ -1,24 +1,28 @@
 @import '../../index.scss';
 
+.btn {
+    padding: 0 30px;
+    height: 30px;
+    max-width: 600px;
+    text-align: center;
+    background-color: transparent;
+    color: $textColor;
+    border: 1px solid $borderColor;
+    border-radius: 6px;
+    margin: 20px auto;
+
+    &:hover {
+        box-shadow: 0 3px $subColor;
+        opacity: 0.7;
+        cursor: pointer;
+    }
+}
+
 .container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 
-    .btn {
-        padding: 0 30px;
-        height: 30px;
-        background-color: transparent;
-        color: $textColor;
-        border: 1px solid $borderColor;
-        border-radius: 6px;
-        margin-top: 10px;
-
-        &:hover {
-            box-shadow: 0 3px $subColor;
-            opacity: 0.7;
-            cursor: pointer;
-        }
-    }
+    
 }
 

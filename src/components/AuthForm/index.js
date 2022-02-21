@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux"
 import clsx from "clsx"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faLock, faEye } from '@fortawesome/free-solid-svg-icons'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import authAPI from '../../apis/auth'
 import useFetch from "../../hooks/usefetch"
@@ -20,7 +22,7 @@ function AuthForm({ type, setIsRegistered }) {
 
     const checkInputField = () => {
         if (username.length < 6) throw 'Username must have more than 8 charaters!'
-        if (password.length < 6) throw 'Password must have more than 8 charaters!'
+        if (password.length < 8) throw 'Password must have more than 8 charaters!'
         if (type === 'register' && passwordCfm !== password) {
             throw 'Confirm password must simillar as password!'
         }
@@ -31,10 +33,13 @@ function AuthForm({ type, setIsRegistered }) {
             checkInputField()
             const account = { username, password }
             const data = await fetchApi(() => authAPI.login(account))
+            
+            toast.success('Login successfully')
             localStorage.setItem('authToken', data.authToken)
             localStorage.setItem('isLogin', true)
             dispatch(setLoginState(true))
         } catch (error) {
+            toast.error(error)
             setErrorMsg(error)
         }
     }
@@ -44,9 +49,10 @@ function AuthForm({ type, setIsRegistered }) {
             checkInputField()
             const account = { username, password, passwordConfirm: passwordCfm }
             await fetchApi(() => authAPI.register(account))
-            alert('Register new account sucessfully')
+            toast.success('Register new account sucessfully')
             setIsRegistered(true)
         } catch (error) {
+            toast.error(error)
             setErrorMsg(error)
         }
     }

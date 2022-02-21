@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
+import { toast } from 'react-toastify';
+
 import storeAPI from '../../apis/store'
 import LinkTag from "../LinkTag";
 import StoreForm from '../StoreForm'
@@ -20,22 +22,26 @@ function Content() {
                 const resData = await storeAPI.getAll()
                 dispatch(setData(resData))
             } catch (error) {
-                alert(error)
-                if (error === 'Unauthorization') handleLogout()
+                toast.error(error)
+                if (error === 'Unauthorization' || error === 'No prohibit') {
+                    handleLogout()
+                }
             }
         })()
     }, [])
 
     return (
-        <div className={clsx(style.container)}>
+        <>
             <div className={clsx(style.btn)} onClick={() => setShow({ show: true, action: 'create' })}>
                 Add a new Link
             </div>
-            {data && data.map((item, i) =>
-                <LinkTag dataTag={item} setShow={setShow} key={i} />)
-            }
-            {show.show && <StoreForm showForm={[show, setShow]} />}
-        </div>
+            <div className={clsx(style.container)}>
+                {data && data.map((item, i) =>
+                    <LinkTag dataTag={item} setShow={setShow} key={i} />)
+                }
+                {show.show && <StoreForm showForm={[show, setShow]} />}
+            </div>
+        </>
     )
 }
 
