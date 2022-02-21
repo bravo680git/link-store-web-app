@@ -21,8 +21,8 @@ function AuthForm({ type, setIsRegistered }) {
     const fetchApi = useFetch()
 
     const checkInputField = () => {
-        if (username.length < 6) throw 'Username must have more than 8 charaters!'
-        if (password.length < 8) throw 'Password must have more than 8 charaters!'
+        if (username.length < 6) throw 'Username must have more than 6 charaters!'
+        if (password.length < 6) throw 'Password must have more than 6 charaters!'
         if (type === 'register' && passwordCfm !== password) {
             throw 'Confirm password must simillar as password!'
         }
