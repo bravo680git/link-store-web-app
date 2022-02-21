@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import { setData } from '../../store/dataSlice'
 import storeAPI from '../../apis/store'
 import useFetch from '../../hooks/usefetch'
+import useEnterKeyDown from '../../hooks/useEnterKeyDown'
 import style from './StoreForm.module.scss'
 
 function StoreForm({ showForm }) {
@@ -21,6 +22,7 @@ function StoreForm({ showForm }) {
     const [errorMsg, setErrorMsg] = useState('')
     const dispatch = useDispatch()
     const fetchApi = useFetch()
+    const handleKeyDown = useEnterKeyDown()
 
     const handleSubmit = async () => {
         try {
@@ -53,7 +55,7 @@ function StoreForm({ showForm }) {
     return (
         <div className={clsx(style.container)}>
             <i onClick={() => setShow({show: false})}><FontAwesomeIcon icon={faTimes}/></i>
-            <form>
+            <form onKeyDown={e => handleKeyDown(e, handleSubmit)}>
                 <div className={clsx(style.heading)}>
                     {action === 'create' ? 'Save a new link' : 'Edit link'}
                 </div>

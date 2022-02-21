@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import authAPI from '../../apis/auth'
 import useFetch from "../../hooks/usefetch"
 import { setLoginState } from '../../store/authSlice'
+import useEnterKeyDown from "../../hooks/useEnterKeyDown"
 import style from './AuthForm.module.scss'
 
 function AuthForm({ type, setIsRegistered }) {
@@ -19,6 +20,7 @@ function AuthForm({ type, setIsRegistered }) {
     const [errorMsg, setErrorMsg] = useState('')
     const dispatch = useDispatch()
     const fetchApi = useFetch()
+    const handleKeyDown = useEnterKeyDown()
 
     const checkInputField = () => {
         if (username.length < 6) throw 'Username must have more than 6 charaters!'
@@ -59,7 +61,7 @@ function AuthForm({ type, setIsRegistered }) {
 
     return (
         <div className={clsx(style.container)}>
-            <form>
+            <form onKeyDown={e => handleKeyDown(e, handleLogin)}>
                 <div className={clsx(style.input)}>
                     <label htmlFor="username">Username</label>
                     <input
