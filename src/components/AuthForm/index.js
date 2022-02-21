@@ -68,6 +68,7 @@ function AuthForm({ type, setIsRegistered }) {
                         name="username"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
+                        autoComplete='off'
                     />
                     <i><FontAwesomeIcon icon={faUser} /></i>
                 </div>
