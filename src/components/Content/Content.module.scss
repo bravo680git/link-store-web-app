@@ -1,28 +1,25 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .btn {
-    padding: 0 30px;
-    height: 30px;
-    max-width: 600px;
-    text-align: center;
-    background-color: transparent;
-    color: $textColor;
-    border: 1px solid $borderColor;
-    border-radius: 6px;
-    margin: 20px auto;
+  padding: 0 30px;
+  height: 30px;
+  max-width: 600px;
+  text-align: center;
+  background-color: transparent;
+  color: $textColor;
+  border: 1px solid $borderColor;
+  border-radius: 6px;
+  margin: 20px auto;
 
-    &:hover {
-        box-shadow: 0 3px $subColor;
-        opacity: 0.7;
-        cursor: pointer;
-    }
+  &:hover {
+    box-shadow: 0 3px $subColor;
+    opacity: 0.7;
+    cursor: pointer;
+  }
 }
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
-

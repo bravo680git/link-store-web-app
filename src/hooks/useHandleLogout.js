@@ -1,13 +1,19 @@
-import { useDispatch } from "react-redux"
-import { setLoginState } from "../store/authSlice"
+import { useDispatch } from "react-redux";
+import { setLoginState } from "../store/authSlice";
 
 const useHandleLogout = () => {
-    const dispatch = useDispatch()
-    return () => {
-        dispatch(setLoginState(false))
-        localStorage.removeItem('isLogin')
-        localStorage.removeItem('authToken')
-    }
-}
+  const dispatch = useDispatch();
+  return () => {
+    dispatch(
+      setLoginState({
+        isLogin: false,
+        role: "",
+      })
+    );
+    sessionStorage.removeItem("isLogin");
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("role");
+  };
+};
 
-export default useHandleLogout
+export default useHandleLogout;
