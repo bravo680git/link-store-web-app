@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 import { setData } from "../../store/dataSlice";
 import storeAPI from "../../apis/store";
-import useFetch from "../../hooks/useFetch.js";
+import useFetch from "../../hooks/useFetch";
 import useEnterKeyDown from "../../hooks/useEnterKeyDown";
 import style from "./StoreForm.module.scss";
 

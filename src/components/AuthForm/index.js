@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import authAPI from "../../apis/auth";
 import { setLoginState } from "../../store/authSlice";
 import useEnterKeyDown from "../../hooks/useEnterKeyDown";
-import useFetch from "../../hooks/useFetch.js";
+import useFetch from "../../hooks/useFetch";
 import style from "./AuthForm.module.scss";
 
 function AuthForm({ type, setIsRegistered }) {

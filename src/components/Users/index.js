@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import useFetch from "../../hooks/useFetch.js";
+import useFetch from "../../hooks/useFetch";
 import adminAPI from "../../apis/admin";
 
 function Users() {
