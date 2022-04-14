@@ -9,7 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 import authAPI from "../../apis/auth";
 import { setLoginState } from "../../store/authSlice";
 import useEnterKeyDown from "../../hooks/useEnterKeyDown";
+<<<<<<< HEAD
 import useFetch from "../../hooks/useFetch.js";
+=======
+// import useFetch from "../../hooks/useFetch";
+>>>>>>> cd2e304d0bce9d5c48dd0af00050fae949d753ce
 import style from "./AuthForm.module.scss";
 
 function AuthForm({ type, setIsRegistered }) {
@@ -19,7 +23,7 @@ function AuthForm({ type, setIsRegistered }) {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const dispatch = useDispatch();
-  const fetchApi = useFetch();
+  const fetchApi = (callback) => callback();
   const handleKeyDown = useEnterKeyDown();
 
   const checkInputField = () => {
