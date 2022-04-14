@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 import { setData } from "../../store/dataSlice";
 import storeAPI from "../../apis/store";
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch.js";
 import style from "./LinkTag.module.scss";
 
 function LinkTag({ dataTag, setShow }) {
