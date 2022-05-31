@@ -8,95 +8,110 @@
   width: 100%;
 
   header {
+    margin-left: 100px;
     display: flex;
     height: 40%;
     line-height: 100%;
+  }
 
-    .home {
-      flex: 1;
-      font-size: 200%;
-      text-align: center;
+  button {
+    height: 100%;
+    padding: 0 16px;
+    font-size: 1.2rem;
+    background-color: inherit;
+    color: var(--main-txt);
+    border: 1px solid var(--border-color);
 
-      &:hover {
-        cursor: pointer;
-        opacity: 0.6;
-      }
+    &:hover {
+      background-color: var(--main-txt);
+      color: var(--main-bg);
+    }
+  }
+}
+
+.searchBox {
+  margin-right: 40px;
+  flex: 3;
+  display: flex;
+  position: relative;
+  height: 100%;
+  margin-left: 5px;
+  max-width: 100%;
+
+  input {
+    flex: 4;
+    background-color: inherit;
+    color: var(--main-txt);
+    border: 1px solid var(--border-color);
+    padding-left: 10px;
+    letter-spacing: 2px;
+    font-size: 16px;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 6px var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+  }
+
+  select {
+    position: absolute;
+    top: 50%;
+    right: 300px;
+    transform: translateY(-50%);
+    border: none;
+    font-size: 16px;
+    background-color: inherit;
+    color: var(--main-txt);
+    width: 60px;
+    letter-spacing: 1px;
+
+    &:focus-visible {
+      outline: none;
     }
 
-    .searchBox {
-      flex: 6;
-      display: flex;
-      position: relative;
-      height: 100%;
-      margin-left: 5px;
+    option {
+      background-color: var(--main-bg);
+    }
+  }
 
-      input {
-        flex: 4;
-        background-color: inherit;
-        color: var(--main-txt);
-        border: 1px solid var(--border-color);
-        padding-left: 10px;
-        letter-spacing: 2px;
-        font-size: 16px;
+  button {
+    width: 10%;
+    min-width: 50px;
+    flex: 1;
+    background-color: var(--main-bg);
+    color: var(--main-txt);
+    border: 1px solid var(--border-color);
+  }
+}
 
-        &:focus,
-        &:focus-visible {
-          outline: none;
-          box-shadow: 0 0 6px var(--primary-color);
-          border: 1px solid var(--primary-color);
-        }
-      }
+.btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  margin-right: 5px;
+}
 
-      select {
-        position: absolute;
-        top: 50%;
-        right: 170px;
-        transform: translateY(-50%);
-        border: none;
-        font-size: 16px;
-        background-color: inherit;
-        color: var(--main-txt);
-        width: 60px;
-        letter-spacing: 1px;
+@media screen and (max-width: 500px) {
+  .container {
+    height: 124px;
 
-        &:focus-visible {
-          outline: none;
-        }
+    header {
+      flex-direction: column;
+      justify-content: center;
+      height: 80px;
+    }
 
-        option {
-          background-color: var(--main-bg);
-        }
-
-        @media screen and (max-width: 500px) {
-          right: 20%;
-        }
-      }
-
-      button {
-        width: 10%;
-        min-width: 50px;
-      }
+    select {
+      right: 96px;
     }
 
     .btn {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      font-weight: 500;
-      margin-right: 5px;
-    }
-
-    button {
-      height: 100%;
-      padding: 0 16px;
-      font-size: 1.2rem;
-      background-color: inherit;
-      color: var(--main-txt);
-      border: 1px solid var(--border-color);
-
-      &:hover {
-        background-color: var(--main-txt);
-        color: var(--main-bg);
+      button {
+        margin-top: 8px;
+        padding: 4px 36px;
       }
     }
   }
