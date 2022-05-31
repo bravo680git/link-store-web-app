@@ -1,6 +1,5 @@
 .btn {
-  padding: 0 30px;
-  height: 30px;
+  padding: 10px 30px;
   max-width: 600px;
   text-align: center;
   background-color: transparent;
@@ -8,6 +7,8 @@
   border: 1px solid var(--border-color);
   border-radius: 6px;
   margin: 20px auto;
+  font-size: 1.1rem;
+  font-weight: 500;
 
   &:hover {
     box-shadow: 0 3px var(--primary-color);

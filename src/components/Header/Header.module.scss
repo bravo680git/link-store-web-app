@@ -50,13 +50,14 @@
       select {
         position: absolute;
         top: 50%;
-        right: 90px;
+        right: 170px;
         transform: translateY(-50%);
         border: none;
         font-size: 16px;
         background-color: inherit;
         color: var(--main-txt);
         width: 60px;
+        letter-spacing: 1px;
 
         &:focus-visible {
           outline: none;
@@ -64,6 +65,10 @@
 
         option {
           background-color: var(--main-bg);
+        }
+
+        @media screen and (max-width: 500px) {
+          right: 20%;
         }
       }
 
@@ -77,15 +82,14 @@
       flex: 1;
       display: flex;
       justify-content: center;
+      font-weight: 500;
       margin-right: 5px;
-
-      button {
-        padding: 0 10px;
-      }
     }
 
     button {
       height: 100%;
+      padding: 0 16px;
+      font-size: 1.2rem;
       background-color: inherit;
       color: var(--main-txt);
       border: 1px solid var(--border-color);
