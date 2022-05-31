@@ -1,12 +1,14 @@
-$bgrColor: #161b22;
-$textColor: #eee;
-$borderColor: #d0d7de;
-$subColor: blue;
-
 body {
-    background-image: radial-gradient(#161b22, 80%, rgba(0, 0, 255, 0.623));
+  background-image: radial-gradient(#161b22, 80%, rgba(0, 0, 255, 0.623));
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+:root {
+  --main-bg: #161b22;
+  --main-txt: #eee;
+  --border-color: #d0d7de;
+  --primary-color: blue;
 }

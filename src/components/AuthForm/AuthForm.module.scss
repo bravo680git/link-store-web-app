@@ -1,90 +1,86 @@
-@import '../../index.scss' ;
-
 .container {
-    max-width: 400px;
-    background-color: $bgrColor;
-    border: 1px solid $borderColor;
-    border-radius: 6px;
-    color: $textColor;
-    margin: 40px auto;
+  max-width: 400px;
+  background-color: var(--main-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--main-txt);
+  margin: 40px auto;
 
-    form {
-        margin-top: 40px;
+  form {
+    margin-top: 40px;
 
-        .input {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            margin: 0 10px;
-    
-            input {
-                height: 30px;
-                padding-left: 30px;
-                font-size: 16px;
-                letter-spacing: 1px;
-                border-radius: 6px;
-                margin-bottom: 10px;
-                border: 1px solid #282d35;
-                background-color: #161b22;
-                color: $textColor;
-                pointer-events: all;
+    .input {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin: 0 10px;
 
-                &:focus-visible{
-                    outline: none;
-                }
+      input {
+        height: 30px;
+        padding-left: 30px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        border: 1px solid #282d35;
+        background-color: #161b22;
+        color: var(--main-txt);
+        pointer-events: all;
 
-                &:focus{
-                    border: 1px solid $subColor;
-                    box-shadow: 0 0 6px $subColor;
-                }
-            }
-    
-            i {
-                position: absolute;
-                top: 22px;
-                left: 5px;
-                font-size: 150%;
-            }
-
-            div {
-                position: absolute;
-                right: 12px;
-                top: 28px;
-
-                &:hover {
-                    opacity: 0.7;
-                    cursor: pointer;
-                }
-            }
-        }
-        
-        .button {
-            text-align: center;
-            button {
-                padding: 6px 30px;
-                border-radius: 4px;
-                border: 1px solid $borderColor;
-                margin-top: 10px;
-                font-size: 20px;
-                font-weight: 400;
-                background-color: $bgrColor;
-                color: $textColor;
-
-                &:hover {
-                    color: $bgrColor;
-                    background-color: $textColor;
-                    cursor: pointer;
-                }
-            }
+        &:focus-visible {
+          outline: none;
         }
 
-        .error {
-            text-align: center;
-            color: red;
-            margin: 10px;
-            font-size: 18px;
+        &:focus {
+          border: 1px solid var(--primary-color);
+          box-shadow: 0 0 6px var(--primary-color);
         }
+      }
+
+      i {
+        position: absolute;
+        top: 22px;
+        left: 5px;
+        font-size: 150%;
+      }
+
+      div {
+        position: absolute;
+        right: 12px;
+        top: 28px;
+
+        &:hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
     }
+
+    .button {
+      text-align: center;
+      button {
+        padding: 6px 30px;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: 400;
+        background-color: var(--main-bg);
+        color: var(--main-txt);
+
+        &:hover {
+          color: var(--main-bg);
+          background-color: var(--main-txt);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .error {
+      text-align: center;
+      color: red;
+      margin: 10px;
+      font-size: 18px;
+    }
+  }
 }
-
-
