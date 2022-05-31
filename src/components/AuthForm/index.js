@@ -23,9 +23,12 @@ function AuthForm({ type, setIsRegistered }) {
   const handleKeyDown = useEnterKeyDown();
 
   const checkInputField = () => {
+    // eslint-disable-next-line no-throw-literal
     if (username.length < 6) throw "Username must have more than 6 charaters!";
+    // eslint-disable-next-line no-throw-literal
     if (password.length < 6) throw "Password must have more than 6 charaters!";
     if (type === "register" && passwordCfm !== password) {
+      // eslint-disable-next-line no-throw-literal
       throw "Confirm password must simillar as password!";
     }
   };

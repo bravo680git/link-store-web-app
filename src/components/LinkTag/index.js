@@ -41,7 +41,7 @@ function LinkTag({ dataTag, setShow }) {
 
   return (
     <div className={clsx(style.tag)}>
-      <a href={dataTag.link} target="_blank">
+      <a href={dataTag.link} target="blank">
         <h3>{dataTag.title}</h3>
         <p>{dataTag.description}</p>
       </a>

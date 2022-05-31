@@ -14,7 +14,7 @@ function AdminPage() {
       toast.error("You are not admin");
       navigate("/store");
     }
-  }, [role]);
+  }, [role, navigate]);
   return (
     <>
       <Header />

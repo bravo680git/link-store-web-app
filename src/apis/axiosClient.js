@@ -40,6 +40,7 @@ axiosClient.interceptors.response.use(
         return Promise.reject(errorData || "No prohibit");
       case 500:
         return Promise.reject(errorData || "Internal server error");
+      default:
     }
   }
 );

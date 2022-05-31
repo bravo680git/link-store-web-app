@@ -12,7 +12,7 @@ function Users() {
       const resData = await fetch(adminAPI.getAllUsers);
       setUsers(resData);
     })();
-  }, []);
+  }, [fetch]);
 
   const handleDelete = async (id) => {
     await fetch(() => adminAPI.deleteUser(id));

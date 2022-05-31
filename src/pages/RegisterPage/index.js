@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import Header from "../../components/Header"
-import AuthForm from '../../components/AuthForm'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
+import AuthForm from "../../components/AuthForm";
 
 function RegisterPage() {
-    const [isRegistered, setIsRegistered] = useState(false)
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (isRegistered) {
-            navigate('/login')
-        }
-    }, [isRegistered])
+  const [isRegistered, setIsRegistered] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isRegistered) {
+      navigate("/login");
+    }
+  }, [isRegistered, navigate]);
 
-    return (
-        <>
-            <Header/>
-            <AuthForm type="register" setIsRegistered={setIsRegistered}/>
-        </>
-    )
+  return (
+    <>
+      <Header />
+      <AuthForm type="register" setIsRegistered={setIsRegistered} />
+    </>
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;

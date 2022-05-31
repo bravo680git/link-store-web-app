@@ -26,6 +26,7 @@ function StoreForm({ showForm }) {
 
   const handleSubmit = async () => {
     try {
+      // eslint-disable-next-line no-throw-literal
       if (!(title && link)) throw "Title and link are require fields";
       const sendData = {
         title,

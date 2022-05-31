@@ -5,21 +5,21 @@ import Content from "../../components/Content";
 import Header from "../../components/Header";
 
 function StorePage() {
-    const isLogin = useSelector(state => state.auth.isLogin)
-    const navigate = useNavigate()
-    
-    useEffect(() => {
-        if (!isLogin) {
-            navigate('/login')
-        }
-    }, [isLogin])
+  const isLogin = useSelector((state) => state.auth.isLogin);
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <Header />
-            <Content/>
-        </>
-    )
+  useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
+  }, [isLogin, navigate]);
+
+  return (
+    <>
+      <Header />
+      <Content />
+    </>
+  );
 }
 
-export default StorePage
+export default StorePage;
