@@ -43,7 +43,7 @@ function LinkTag({ dataTag, setShow }) {
     <div className={clsx(style.tag)}>
       <a href={dataTag.link} target="blank">
         <h3>{dataTag.title}</h3>
-        <p>{dataTag.description}</p>
+        {dataTag.description && <p>{dataTag.description}</p>}
       </a>
       <div className={clsx(style.btn)}>
         <i className={clsx(style.edit)} onClick={handleEdit}>
