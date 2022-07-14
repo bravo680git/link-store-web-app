@@ -27,7 +27,18 @@ function LinkTag({ dataTag, setShow }) {
     const cfm = window.confirm("Delete this link tag");
     if (!cfm) return;
     const id = dataTag._id;
-    const newData = data.filter((item) => item._id !== id);
+
+    const newData = data.map((group) => {
+      if (group.type !== dataTag.type) {
+        return group;
+      } else {
+        return {
+          type: group.type,
+          sub: group.sub.filter((item) => item._id !== dataTag._id),
+        };
+      }
+    });
+
     dispatch(setData(newData));
 
     try {

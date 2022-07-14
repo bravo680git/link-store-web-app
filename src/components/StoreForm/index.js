@@ -9,6 +9,7 @@ import { setData } from "../../store/dataSlice";
 import storeAPI from "../../apis/store";
 import useFetch from "../../hooks/useFetch";
 import useEnterKeyDown from "../../hooks/useEnterKeyDown";
+import { handleData } from "../../ultils/functions";
 import style from "./StoreForm.module.scss";
 
 function StoreForm({ showForm }) {
@@ -45,7 +46,8 @@ function StoreForm({ showForm }) {
 
       setShow({ show: false }); //hide store form
       const resData = await storeAPI.getAll();
-      dispatch(setData(resData));
+      const returnData = handleData(resData);
+      dispatch(setData(returnData));
     } catch (error) {
       toast.error(error);
       setErrorMsg(error);

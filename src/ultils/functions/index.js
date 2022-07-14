@@ -1,7 +1,7 @@
 const handleData = (data) => {
   const types = [];
 
-  data.forEach((item) => {
+  data.reverse().forEach((item) => {
     if (item.type !== "" && !types.includes(item.type)) {
       types.push(item.type);
     }
