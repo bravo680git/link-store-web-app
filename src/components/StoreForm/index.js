@@ -31,7 +31,7 @@ function StoreForm({ showForm }) {
       const sendData = {
         title,
         link,
-        type,
+        type: type && type.toUpperCase(),
         description,
       };
 

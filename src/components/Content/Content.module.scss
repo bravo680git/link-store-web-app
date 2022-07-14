@@ -17,15 +17,3 @@
     cursor: pointer;
   }
 }
-
-.container {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-@media screen and (max-width: 500px) {
-  .container {
-    justify-content: center;
-  }
-}

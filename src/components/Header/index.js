@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import storeAPI from "../../apis/store";
 import useHandleLogout from "../../hooks/useHandleLogout";
 import { setData } from "../../store/dataSlice";
+import { handleData } from "../../ultils/functions";
 import style from "./Header.module.scss";
 
 function Header() {
@@ -20,7 +21,8 @@ function Header() {
     if (!isLogin) return;
     try {
       const resData = await storeAPI.searchLink({ [query]: search });
-      dispatch(setData(resData));
+      const returnData = handleData(resData);
+      dispatch(setData(returnData));
     } catch (error) {
       toast.error(error);
     }

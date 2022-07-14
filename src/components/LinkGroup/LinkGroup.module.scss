@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.151);
+  width: 94%;
+  margin: 16px auto;
+  padding: 12px 0;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--main-txt);
+  margin-left: 20px;
+}
+
+.children {
+  display: flex;
+  flex-wrap: wrap;
+}
