@@ -18,9 +18,21 @@ function HomePage() {
       <Header />
       <div className={clsx(style.homeContent)}>
         <p>
-          Welcome to link store app, a app can help you store and easily search
-          the URL to many website.
+          Welcome to link store app, an app can help you store and manage your
+          links.
         </p>
+        <div>
+          <div>
+            <span>Easy and</span>
+            <span>Convenient</span>
+          </div>
+          <span>to</span>
+          <div>
+            <span>save,</span>
+            <span>search,</span>
+            <span>& access</span>
+          </div>
+        </div>
         <hr />
         <p>
           <Link to="/register">Sign up</Link> or{" "}

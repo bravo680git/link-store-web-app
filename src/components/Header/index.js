@@ -45,16 +45,28 @@ function Header() {
         </div>
         {!isLogin ? (
           <div className={clsx(style.btn)}>
-            <div className={clsx(style.signIn)}>
-              <button onClick={() => navigate("/login")}>Sign in</button>
+            <div>
+              <button
+                className={clsx(style.signIn)}
+                onClick={() => navigate("/login")}
+              >
+                Sign in
+              </button>
             </div>
-            <div className={clsx(style.signUp)}>
-              <button onClick={() => navigate("/register")}>Sign up</button>
+            <div>
+              <button
+                className={clsx(style.signUp)}
+                onClick={() => navigate("/register")}
+              >
+                Sign up
+              </button>
             </div>
           </div>
         ) : (
-          <div className={clsx(style.btn)}>
-            <button onClick={handleLogout}>Log out</button>
+          <div>
+            <button className={clsx(style.logOut)} onClick={handleLogout}>
+              Log out
+            </button>
           </div>
         )}
       </header>

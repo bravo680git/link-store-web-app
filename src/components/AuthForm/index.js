@@ -100,7 +100,10 @@ function AuthForm({ type, setIsRegistered }) {
           </i>
           {type === "register" ? null : (
             <div onClick={() => setShowPassword(!showPassword)}>
-              <FontAwesomeIcon icon={faEye} />
+              <FontAwesomeIcon
+                icon={faEye}
+                className={clsx({ [style.fade]: !showPassword })}
+              />
             </div>
           )}
         </div>
