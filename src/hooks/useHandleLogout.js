@@ -1,19 +1,19 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { setLoginState } from "../store/authSlice";
+import authApi from "../apis/auth";
 
 const useHandleLogout = () => {
   const dispatch = useDispatch();
-  return useCallback(() => {
+  return useCallback(async () => {
     dispatch(
       setLoginState({
         isLogin: false,
         role: "",
       })
     );
-    localStorage.removeItem("isLogin");
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("role");
+    await authApi.logout();
+    localStorage.clear();
   }, [dispatch]);
 };
 
