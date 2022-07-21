@@ -40,9 +40,10 @@ function AuthForm({ type, setIsRegistered }) {
       const data = await fetchApi(() => authAPI.login(account));
 
       toast.success("Login successfully");
-      sessionStorage.setItem("authToken", data.authToken);
-      sessionStorage.setItem("isLogin", true);
-      sessionStorage.setItem("role", data.role);
+      localStorage.setItem("authToken", data.authToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
+      localStorage.setItem("isLogin", true);
+      localStorage.setItem("role", data.role);
       dispatch(
         setLoginState({
           isLogin: true,

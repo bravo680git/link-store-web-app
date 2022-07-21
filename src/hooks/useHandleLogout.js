@@ -11,9 +11,9 @@ const useHandleLogout = () => {
         role: "",
       })
     );
-    sessionStorage.removeItem("isLogin");
-    sessionStorage.removeItem("authToken");
-    sessionStorage.removeItem("role");
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("role");
   }, [dispatch]);
 };
 

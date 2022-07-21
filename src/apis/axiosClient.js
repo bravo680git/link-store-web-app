@@ -9,7 +9,7 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   async (config) => {
-    const token = sessionStorage.getItem("authToken");
+    const token = localStorage.getItem("authToken");
     if (token) {
       config.headers = {
         Authorization: `Bearer ${token}`,
@@ -33,11 +33,18 @@ axiosClient.interceptors.response.use(
       case 400:
         return Promise.reject(errorData || "Bad request");
       case 401:
-        return Promise.reject(errorData || "Unauthorzied");
+      case 403:
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (!refreshToken) return Promise.reject(errorData || "Unauthorized");
+
+        axiosClient.post("/auth/refreshToken", { refreshToken }).then((res) => {
+          localStorage.setItem("authToken", res.authToken);
+          localStorage.setItem("refreshToken", res.refreshToken);
+        });
+
+        return axiosClient(error.config);
       case 404:
         return Promise.reject(errorData || "Not Found");
-      case 403:
-        return Promise.reject(errorData || "No prohibit");
       case 500:
         return Promise.reject(errorData || "Internal server error");
       default:
