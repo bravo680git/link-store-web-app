@@ -1,18 +1,25 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import clsx from "clsx";
+import { setLoading } from "../../store/dataSlice";
 import Header from "../../components/Header";
 import style from "./HomePage.module.scss";
 
 function HomePage() {
   const isLogin = useSelector((state) => state.auth.isLogin);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (isLogin) {
-      navigate("/store");
+      dispatch(setLoading(true));
+      setTimeout(() => {
+        dispatch(setLoading(false));
+        navigate("/store");
+      }, 1000);
     }
-  }, [navigate, isLogin]);
+  }, [navigate, isLogin, dispatch]);
   return (
     <>
       <Header />

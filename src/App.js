@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Pages.HomePage />} />
       </Routes>
       <Loading show={loading} />
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
     </>
   );
 }
