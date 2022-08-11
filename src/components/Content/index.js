@@ -22,13 +22,11 @@ function Content() {
     (async () => {
       try {
         const resData = await storeAPI.getAll();
+        console.log(resData);
         const returnData = handleData(resData);
         dispatch(setData(returnData));
       } catch (error) {
         toast.error(error);
-        if (error === "Unauthorization" || error === "No prohibit") {
-          handleLogout();
-        }
       }
     })();
   }, [handleLogout, dispatch]);

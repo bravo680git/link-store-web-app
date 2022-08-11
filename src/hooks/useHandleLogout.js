@@ -5,15 +5,14 @@ import authApi from "../apis/auth";
 
 const useHandleLogout = () => {
   const dispatch = useDispatch();
-  return useCallback(async () => {
+  return useCallback(() => {
     dispatch(
       setLoginState({
         isLogin: false,
         role: "",
       })
     );
-    await authApi.logout();
-    localStorage.clear();
+    authApi.logout().finally(() => localStorage.clear());
   }, [dispatch]);
 };
 

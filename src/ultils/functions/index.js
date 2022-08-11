@@ -15,4 +15,10 @@ const handleData = (data) => {
   }));
 };
 
-export { handleData };
+const handleReloadApp = () => {
+  localStorage.clear();
+  alert("Session expired! Please Log in again!");
+  window.location.reload();
+};
+
+export { handleData, handleReloadApp };
