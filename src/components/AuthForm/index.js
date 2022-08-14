@@ -18,6 +18,7 @@ function AuthForm({ type, setIsRegistered }) {
   const [passwordCfm, setPasswordCfm] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [saveAccount, setSaveAccount] = useState(false);
   const dispatch = useDispatch();
   const fetchApi = useFetch();
   const handleKeyDown = useEnterKeyDown();
@@ -40,10 +41,18 @@ function AuthForm({ type, setIsRegistered }) {
       const data = await fetchApi(() => authAPI.login(account));
 
       toast.success("Login successfully");
-      localStorage.setItem("authToken", data.authToken);
-      localStorage.setItem("refreshToken", data.refreshToken);
-      localStorage.setItem("isLogin", true);
-      localStorage.setItem("role", data.role);
+      localStorage.setItem("saveAccount", saveAccount);
+      if (saveAccount) {
+        localStorage.setItem("authToken", data.authToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
+        localStorage.setItem("isLogin", true);
+        localStorage.setItem("role", data.role);
+      } else {
+        sessionStorage.setItem("authToken", data.authToken);
+        sessionStorage.setItem("isLogin", true);
+        sessionStorage.setItem("role", data.role);
+      }
+
       dispatch(
         setLoginState({
           isLogin: true,
@@ -122,6 +131,19 @@ function AuthForm({ type, setIsRegistered }) {
             </i>
           </div>
         ) : null}
+
+        {type === "login" && (
+          <div className={clsx(style.saveAccount)}>
+            <input
+              type="checkbox"
+              id="saveAccount"
+              checked={saveAccount}
+              onChange={(e) => setSaveAccount(e.target.checked)}
+            />
+            <label htmlFor="saveAccount">Save account</label>
+          </div>
+        )}
+
         <div className={clsx(style.button)}>
           {type === "register" ? (
             <button type="button" onClick={hadleRegister}>

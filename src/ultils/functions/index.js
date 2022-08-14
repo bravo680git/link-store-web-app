@@ -16,6 +16,7 @@ const handleData = (data) => {
 };
 
 const handleReloadApp = () => {
+  sessionStorage.clear();
   localStorage.clear();
   alert("Session expired! Please Log in again!");
   window.location.reload();

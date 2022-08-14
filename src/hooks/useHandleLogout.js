@@ -12,7 +12,10 @@ const useHandleLogout = () => {
         role: "",
       })
     );
-    authApi.logout().finally(() => localStorage.clear());
+    authApi.logout().finally(() => {
+      localStorage.clear();
+      sessionStorage.clear();
+    });
   }, [dispatch]);
 };
 
