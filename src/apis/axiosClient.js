@@ -2,7 +2,7 @@ import axios from "axios";
 import { handleReloadApp } from "../ultils/functions";
 
 const axiosClient = axios.create({
-  baseURL: "https://link-store-bravo680.herokuapp.com/api/",
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
